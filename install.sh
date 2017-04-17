@@ -1,22 +1,22 @@
 #=============================================================================
 echo Install Unity Tweak Tool ...
-apt-get install unity-tweak-tool -y
+sudo apt-get install unity-tweak-tool -y
  
 #=============================================================================
 echo Install Synatic Package Manager ...
-apt-get install synaptic -y
+sudo apt-get install synaptic -y
 
 #=============================================================================
 echo Install Git ...
-apt-get install git -y
+sudo apt-get install git -y
 
 #=============================================================================
 echo Install ibus-unikey ...
-apt-get install ibus-unikey -y
+sudo apt-get install ibus-unikey -y
 ibus restart
 
 #=============================================================================
 echo Install Skype  ...
-wget https://go.skype.com/linux.deb
-dpgk -i skype*
-rm skype*
+wget https://go.skype.com/skypeforlinux-64.deb
+sudo dpkg -i skype*
+sudo rm skype*
