@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.comment" deleted="false" description="author name" enabled="true" id="org.eclipse.cdt.ui.text.templates.comment.author" name="author">author ${user}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="Sample code to blink the LED on MSP430" enabled="true" id="com.ti.ccstudio.com.ti.ccstudio.editor.templates.blinkmsp430" name="blinkmsp430">//***************************************************************************************&#13;
+//  MSP430 Blink the LED Demo - Software Toggle P1.0&#13;
+//&#13;
+//  Description; Toggle P1.0 by xor'ing P1.0 inside of a software loop.&#13;
+//  ACLK = n/a, MCLK = SMCLK = default DCO&#13;
+//&#13;
+//                MSP430x5xx&#13;
+//             -----------------&#13;
+//         /|\|              XIN|-&#13;
+//          | |                 |&#13;
+//          --|RST          XOUT|-&#13;
+//            |                 |&#13;
+//            |             P1.0|--&gt;LED&#13;
+//&#13;
+//  J. Stevenson&#13;
+//  Texas Instruments, Inc&#13;
+//  July 2011&#13;
+//  Built with Code Composer Studio v5&#13;
+//***************************************************************************************&#13;
+&#13;
+#include &lt;msp430.h&gt;				&#13;
+&#13;
+int main(void)&#13;
+{&#13;
+  WDTCTL = WDTPW + WDTHOLD;             // Stop watchdog timer&#13;
+  P1DIR |= 0x01;                        // Set P1.0 to output direction&#13;
+&#13;
+  for (;;)&#13;
+  {&#13;
+    volatile unsigned int i;            // volatile to prevent optimization&#13;
+&#13;
+    P1OUT ^= 0x01;                      // Toggle P1.0 using exclusive-OR&#13;
+&#13;
+    i = 10000;                          // SW Delay&#13;
+    do i--;&#13;
+    while (i != 0);&#13;
+  }&#13;
+}&#13;
+</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="catch block" enabled="true" id="org.eclipse.cdt.ui.text.templates.cpp.catch" name="catch">catch (${Exception} e) {
+	${cursor}
+}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="class declaration" enabled="true" id="org.eclipse.cdt.ui.text.templates.cpp.class" name="class">class ${name} {
+public:
+	${cursor}
+
+private:
+};</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="default multiline comment" enabled="true" id="org.eclipse.cdt.ui.text.templates.c.comment" name="comment">
+/*
+ * author ${user}
+ *
+ * To change this generated comment edit the template variable "comment":
+ * Window &gt; Preferences &gt; C/C++ &gt; Editor &gt; Templates.
+ */
+</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="do while statement" enabled="true" id="org.eclipse.cdt.ui.text.templates.c.do" name="do">do {
+	${line_selection}${cursor}
+} while (${condition});</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="else block" enabled="true" id="org.eclipse.cdt.ui.text.templates.c.else" name="else">else {
+	${cursor}
+}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="else if block" enabled="true" id="org.eclipse.cdt.ui.text.templates.c.elseif" name="elseif">else if (${condition}) {
+	${cursor}
+}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="for loop" enabled="true" id="org.eclipse.cdt.ui.text.templates.c.for" name="for">for (${var} = 0; ${var} &lt; ${max}; ++${var}) {
+	${line_selection}${cursor}
+}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="for loop with temporary variable" enabled="true" id="org.eclipse.cdt.ui.text.templates.cpp.for" name="for">for (int ${var} = 0; ${var} &lt; ${max}; ++${var}) {
+	${line_selection}${cursor}
+}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="function detail" enabled="true" name="function">/*******************************************************************************&#13;
+ ** @brief     	${func_brief}&#13;
+ ** @param     	${func_param}&#13;
+ ** @return    	${return_type}&#13;
+ ** @time		${time} - ${date}&#13;
+ ** @revision&#13;
+ ******************************************************************************/</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="Hello world example for DSP/BIOS 5.x" enabled="true" id="com.ti.ccstudio.com.ti.ccstudio.editor.templates.helloworldBIOS5" name="hellobios5">//***************************************************************************************&#13;
+//  Hello world Example for DSP/BIOS 5.x&#13;
+//&#13;
+//  Description: This simple program outputs hello world to the console&#13;
+//&#13;
+//  J. Stevenson&#13;
+//  Texas Instruments, Inc&#13;
+//  October 2008&#13;
+//  Built with Code Composer Studio v4&#13;
+//***************************************************************************************&#13;
+&#13;
+#include &lt;std.h&gt;&#13;
+&#13;
+#include &lt;log.h&gt;&#13;
+&#13;
+#include "${enclosing_project}cfg.h"							// TODO: you may need to edit this line to match your project&#13;
+&#13;
+/*&#13;
+ *  ======== main ========&#13;
+ */&#13;
+Void main()&#13;
+{&#13;
+    LOG_printf(&amp;trace, "hello world!");			// TODO: you will need to open your BIOS configuration file and add a new LOG object called trace&#13;
+&#13;
+    /* fall into DSP/BIOS idle loop */&#13;
+    return;&#13;
+}&#13;
+</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="Example hello world code for DSP/BIOS 6" enabled="true" id="com.ti.ccstudio.com.ti.ccstudio.editor.templates.hellowordBIOS6" name="hellobios6">//***************************************************************************************&#13;
+//  Hello world Example for DSP/BIOS 6.x&#13;
+//&#13;
+//  Description: This simple program outputs hello world to the console&#13;
+//&#13;
+//  J. Stevenson&#13;
+//  Texas Instruments, Inc&#13;
+//  October 2008&#13;
+//  Built with Code Composer Studio v4&#13;
+//***************************************************************************************&#13;
+&#13;
+#include &lt;xdc/std.h&gt;&#13;
+#include &lt;xdc/runtime/System.h&gt;&#13;
+&#13;
+/*&#13;
+ *  ======== main ========&#13;
+ */&#13;
+Void main()&#13;
+{ &#13;
+    System_printf("hello world\n");&#13;
+}&#13;
+&#13;
+</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="Example hello world code" enabled="true" id="com.ti.ccstudio.com.ti.ccstudio.editor.templates.helloword" name="helloworld">//***************************************************************************************&#13;
+//  Hello world Example&#13;
+//&#13;
+//  Description: This simple program outputs hello world to the console&#13;
+//&#13;
+//  J. Stevenson&#13;
+//  Texas Instruments, Inc&#13;
+//  October 2008&#13;
+//  Built with Code Composer Studio v4&#13;
+//***************************************************************************************&#13;
+&#13;
+#include &lt;stdio.h&gt;						// standard I/O needed for printf&#13;
+&#13;
+void main(void) {&#13;
+	printf("hello world\n");&#13;
+	&#13;
+	return;&#13;
+}&#13;
+</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="if statement" enabled="true" id="org.eclipse.cdt.ui.text.templates.c.if" name="if">if (${condition}) {
+	${line_selection}${cursor}
+}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="if else statement" enabled="true" id="org.eclipse.cdt.ui.text.templates.c.ifelse" name="ifelse">if (${condition}) {
+	${cursor}
+} else {
+	
+}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="main method" enabled="true" id="org.eclipse.cdt.ui.text.templates.c.main" name="main">int main(int argc, char **argv) {
+	${cursor}
+}
+</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="namespace declaration" enabled="true" id="org.eclipse.cdt.ui.text.templates.cpp.namespace" name="namespace">namespace ${name} {
+
+${cursor}
+
+}  // namespace ${name}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="create new object" enabled="true" id="org.eclipse.cdt.ui.text.templates.cpp.new" name="new">${type} ${name} = new ${type}(${arguments});</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="print to standard error" enabled="true" id="org.eclipse.cdt.ui.text.templates.c.fprintf" name="stderr">fprintf(stderr, ${cursor});</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="print to standard output" enabled="true" id="org.eclipse.cdt.ui.text.templates.c.printf" name="stdout">printf(${cursor});</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="switch case statement" enabled="true" id="org.eclipse.cdt.ui.text.templates.c.switch" name="switch">switch (${key}) {
+	case ${value}:
+		${cursor}
+		break;
+	default:
+		break;
+}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="try catch block" enabled="true" id="org.eclipse.cdt.ui.text.templates.cpp.try" name="try">try {
+	${line_selection}${cursor}
+} catch (${Exception} e) {
+}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="using a namespace" enabled="true" id="org.eclipse.cdt.ui.text.templates.cpp.using" name="using">using namespace ${name};
+</template></templates>
