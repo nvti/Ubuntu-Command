@@ -21,3 +21,7 @@ sudo apt-get install sni-qt:i386 -y
 wget https://go.skype.com/skypeforlinux-64.deb
 sudo dpkg -i skype*
 sudo rm skype*
+
+#=============================================================================
+echo Using local RTC
+timedatectl set-local-rtc 1
