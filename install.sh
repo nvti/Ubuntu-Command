@@ -25,3 +25,10 @@ sudo rm skype*
 #=============================================================================
 echo Using local RTC
 timedatectl set-local-rtc 1
+
+#=============================================================================
+echo Update .bashrc
+rm ~/.bashrc
+ln .bashrc ~
+source ~/.bashrc
+
